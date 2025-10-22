@@ -12,6 +12,7 @@
 <body>
     <div class="div-body">
         <button>Click me</button>
+        <img id="foto" src="" alt="">
     </div>
 </body>
 
@@ -24,15 +25,22 @@
     ];
 
     const button = document.querySelector('button');
-
     let index = 0;
+
     button.addEventListener('click', () => {
         const div = document.querySelector('.div-body');
         div.innerHTML = '<h1 data-aos="fade-up">Olá mundo</h1>';
         trocarFoto(div);
+
+        const img = document.createElement('img');
+        img.src = fotos[index];
+        img.setAttribute('data-aos', 'fade-up');
+        div.appendChild(img);
+        
+        index = (index + 1) % fotos.length;
     });
 
-    function trocarFoto(div){
+    /*function trocarFoto(div){
         const img = document.createElement('img');
         img.src = fotos[index];
         img.setAttribute('data-aos', 'fade-up');
@@ -41,7 +49,7 @@
         index = (index + 1) % fotos.length;
 
         setTimeout(() => trocarFoto(div), 1000);
-    }
+    }* /
 
    AOS.init();
 </script>
